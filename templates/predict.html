@@ -1,0 +1,87 @@
+{% extends "drugRecommend.html" %}
+{% block content %}
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <style>
+        .review-section,
+.condition-section,
+.recommended-drugs-section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 180px;
+    width: 1150px;
+}
+
+.section-header {
+    background-color: #abcde9;
+    color: rgb(19, 17, 17);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.section-body {
+    padding: 10px;
+   text-align: center;
+}
+
+.review-text,
+.condition-text,
+.recommended-drug {
+    font-size: 16px;
+}
+
+.recommended-drugs-table {
+    width: 100%;
+}
+
+.recommended-drug {
+    border-radius: 10px;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px;
+    display: inline-block;
+    margin: 5px;
+}
+    </style>
+    <div class="review-section">
+        <div class="section-header">
+            <strong>Original Entered Review:</strong>
+        </div>
+        <div class="section-body">
+            <p class="review-text">{{ rawtext }}</p>
+        </div>
+    </div>
+<br>
+    <div class="condition-section">
+        <div class="section-header">
+            <strong>Predicted Medical Condition</strong>
+        </div>
+        <div class="section-body">
+            <p class="condition-text">{{ condition }}</p>
+        </div>
+    </div>
+<br>
+    <div class="recommended-drugs-section">
+        <div class="section-header">
+            <strong><i class="fas fa-file-export"></i>Top 3 Recommended Drugs:</strong>
+        </div>
+        <br><br>
+        <div class="section-body">
+            <table class="recommended-drugs-table" align="center">
+                <tr>
+                    {% for top_drug in top_three_drugs %}
+                        <th>
+                            <p class="recommended-drug">{{ top_drug }}</p>
+                        </th>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

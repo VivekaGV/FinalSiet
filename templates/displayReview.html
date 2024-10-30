@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Reviews for {{ drug_name }}</title>
+    <style>
+        h1 {
+            text-align: center;
+            width: 550px;
+            color: #040404;
+            font-family: serif;
+            margin-top: 20px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            background-color: #f5f1f4;
+            border-radius: 8px;
+            margin-left: 0px;
+            
+        }
+        .navbar-custom {
+            background-color: #00008B;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            color: #ffff00;
+        }
+        body{
+            margin: 50px;
+            padding: 20px;
+            background-color: rgb(166, 200, 212);
+        }
+        img {
+            border-radius: 20px;
+            margin: 0px;
+            padding: 10px;
+        }
+        .positive {
+            margin: 100px;
+            font-family: 'Arial';
+            font-size: 15px;
+            font-variant: small-caps;
+            color: #0A0A0A;
+            text-transform: lowercase;
+            text-align: justify;
+            letter-spacing: 1.5px;
+            line-height: 135%;
+            list-style-type: circle;
+            padding: 10px;
+            border: 2px solid black;
+            padding: 50px;
+            border-bottom: #ffffff;
+            background-color: #edd2d2;
+
+        }
+        .neutral {
+           
+            margin: 100px;
+            font-family: 'Arial';
+            font-size: 15px;
+            font-variant: small-caps;
+            color: #0A0A0A;
+            text-transform: lowercase;
+            text-align: justify;
+            letter-spacing: 1.5px;
+            line-height: 135%;
+            list-style-type: circle;
+            padding: 10px;
+            border: 2px solid black;
+            padding: 40px;
+            border-bottom: #ffffff;
+            background-color: #edd2d2;
+        }
+        .negative {
+            margin: 100px;
+            font-family: 'Arial';
+            font-size: 15px;
+            font-variant: small-caps;
+            color: #0A0A0A;
+            text-transform: lowercase;
+            text-align: justify;
+            letter-spacing: 1.5px;
+            line-height: 135%;
+            list-style-type: circle;
+            padding: 10px;
+            border: 2px solid black;
+            padding: 40px;
+            border-bottom: #ffffff;
+            background-color: #edd2d2;
+        }
+        b{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: fit-content;
+            display: block;
+            padding: 5px 10px;
+            font-size: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgb(13, 161, 32);
+            text-align: center;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #0e38df; 
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/index">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR-O1nqOEZ-SA_DRD6I3ciaSl01yt2-lnwBGLGuKHbB667l1v15"
+                            alt="diseases" width="80px" height="80px">Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Reviews for {{ drug_name }}</h1>
+    <h2 ><b class="positive1"> <b>Positive</b></b></h2>
+    <ul class="positive">
+        {% for review in positive_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2 class="neutral1"><b>Neutral</b></h2>
+    <ul class="neutral">
+        {% for review in neutral_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2 class="negative1"><b>Negative</b></h2>
+    <ul class="negative">
+        {% for review in negative_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

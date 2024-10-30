@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews for {{ drug_name }}</title>
+    <style>
+        .navbar-custom {
+            background-color: #00008B;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            color: #ffff00;
+        }
+        .positive {
+            background-color: #0af449; /* light red */
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .neutral {
+            background-color: #FFD700; /* gold */
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .negative {
+            background-color: #ec6550; /* light green */
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background-color: #00008B; color: #ffffff; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto;">
+            <div>
+                <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold;">MCPDR</a>
+                <a href="/index" style="color: #ffffff; text-decoration: none; margin-right: 10px;">Home</a>
+            </div>
+            <div>
+                <a href="/logout" style="color: #ffffff; text-decoration: none;">Log out</a>
+            </div>
+        </div>
+    </nav>
+    <h1>Reviews for {{ drug_name }}</h1>
+    <h2 class="positive">Positive</h2>
+    <ul class="positive">
+        {% for review in positive_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+    <h2 class="neutral">Neutral</h2>
+    <ul class="neutral">
+        {% for review in neutral_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+    <h2 class="negative">Negative</h2>
+    <ul class="negative">
+        {% for review in negative_reviews %}
+            <li>{{ review }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

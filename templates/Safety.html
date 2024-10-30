@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Safety Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-image: url(https://c0.wallpaperflare.com/preview/923/213/70/about-health-medical-medicine.jpg);
+            overflow:auto;
+            
+            max-width: 55%;
+            height: 500px;
+            overflow: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            box-shadow: brown;
+            height: 60px;
+            width: 400px;
+            border-color: black;
+            border-radius: 20px;
+        }
+
+        button.btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            margin-left: 250px;
+           
+        }
+
+        button.btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar-custom {
+            background-color: #00008B;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+
+            color: #ffff00;
+        }
+
+        img {
+            border-radius: 20px;
+            margin: 0px;
+            padding: 10px;
+        }
+        .hall{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            color: rgb(247, 243, 243);
+            background-color: #007bff;
+            background-position-x: left;
+            width: 50%;
+            margin-left: 200px;
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 20px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/index">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR-O1nqOEZ-SA_DRD6I3ciaSl01yt2-lnwBGLGuKHbB667l1v15"
+                            alt="diseases" width="80px" height="80px">Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="hall">Check Drug Safety</h1>
+        <form action="/check_safety" method="POST">
+            <div class="form-group">
+                <label for="drug_name">Enter Drug Name:</label>
+                <input type="text" class="form-control" id="drug_name" name="drug_name" placeholder="Enter drug name"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Safety</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

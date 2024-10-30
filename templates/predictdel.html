@@ -1,0 +1,125 @@
+{%extends "drugRecommend.html" %}
+{%block content%}
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+   
+    .card {
+        margin-top: 20px;
+        border: 1px solid #333; 
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff; 
+    }
+    
+    .card-row {
+        background-color: #007bff; /* Accent color for header */
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .card-text {
+        width: 20%; 
+        max-height: 200px; 
+        overflow: auto; 
+        background-color: #f9f9f9; 
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px auto; /* Center the text box horizontally */
+        box-shadow: 15px 12px 14px rgba(18, 2, 6, 0.1);
+        font-size: 16px;
+        line-height: 1.5;
+        color: #030303;
+        text-align: center;
+    }
+    
+    .round1 {
+        font-weight: bold;
+    }
+    
+    .success-rate {
+        color: green;
+    }
+    
+    table {
+        width: 100%;
+    }
+    
+    th {
+        padding: 10px;
+    }
+    
+    .fa-file-export {
+        margin-right: 5px; /* Adjust as needed */
+    }
+</style>
+
+ <div class="card text-center">
+        <div class="card-row">
+        <strong>   Original Entered Review : </strong>
+        </div>
+        <div class="card-body">
+            
+            <p id="new" class="card-text">
+            
+             {{ rawtext }}
+            </p>
+
+        </div>
+      
+    </div>
+
+
+
+ <br><br>
+
+ <div class="card text-center">
+  <div class="card-row">
+  <strong>   Predicted Medical Condition</strong>
+  </div>
+  <div class="card-body">
+      
+      <p id="new" class="card-text">
+      
+       {{ result }}
+      </p>
+
+  </div>
+
+</div>
+
+
+   <div class="card text-center">
+        <div class="card-row">
+          <strong> <i class="fas fa-file-export"></i>Top 3 Recommended Drugs:  </strong>
+        </div>
+        <div class="card-body">
+       <table align="center">
+       
+                   <tr>
+                    {% for drug_data in top_drugs_data %}
+                    <th>
+                        <p class="round1">{{ drug_data.drug }}</p>
+                        <p class="success-rate">Success Rate: {{ '%.2f' % drug_data.percentage }}%</p>
+                    </th>
+                    {% endfor %}
+                     </tr>
+       
+        </table>
+     
+        </div>
+      
+    </div>
+
+
+ 
+  
+
+  
+
+  
+
+{% endblock %}

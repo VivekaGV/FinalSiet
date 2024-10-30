@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Result</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.info-box {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.info-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-list {
+    padding: 0;
+    margin: 0;
+}
+
+.info-item {
+    margin-bottom: 5px;
+}
+.navbar-custom {
+            background-color: #00008B;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background-color: #00008B; color: #ffffff; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto;">
+            <div>
+                <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold;">MCPDR</a>
+                <a href="/index" style="color: #ffffff; text-decoration: none; margin-right: 10px;">Home</a>
+            </div>
+            <div>
+                <a href="/logout" style="color: #ffffff; text-decoration: none;">Log out</a>
+            </div>
+        </div>
+    </nav>
+        
+    <div class="container">
+        {% if error_message %}
+            <h1>Drug not found in database.</h1>
+        {% else %}
+            <h1>Safety Result</h1>
+            <div class="info-box">
+                <h2 class="info-title">Drug Information</h2>
+                <ul class="info-list">
+                    <li class="info-item">Drug Name: {{ drug_name }}</li>
+                    <li class="info-item">Condition: {{ condition }}</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <h2 class="info-title">Side Effects</h2>
+                <p class="info-text">{{ side_effects }}</p>
+            </div>
+            <div class="info-box">
+                <h2 class="info-title">Benefits</h2>
+                <p class="info-text">{{ benefits }}</p>
+            </div>
+            <div class="info-box">
+                <h2 class="info-title">Precautions</h2>
+                <p class="info-text">{{ precautions }}</p>
+            </div>
+            <div class="info-box">
+                <h2 class="info-title">Warnings</h2>
+                <p class="info-text">{{ warnings }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Safety Result</title>
+    <style>
+        body {
+            background-image: url(https://c1.wallpaperflare.com/preview/698/88/879/medical-treatment-pill-capsule-cure-disease.jpg);
+            font-family: Arial, sans-serif;
+
+        }
+
+        .navbar-custom {
+            background-color: #00008B;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+
+            color: #ffff00;
+        }
+
+        img {
+            border-radius: 20px;
+            margin: 0px;
+            padding: 10px;
+        }
+
+        .container {
+            background: linear-gradient(#FCFCFC, #F9F9F9);
+            width: 575px;
+            margin: auto;
+            border-radius: 2px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            position: absolute;
+            margin-top: 100px;
+            left: 10px;
+            top: 10px;
+            background-color: #0A0A0A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            font-family: 'Arial', sans-serif;
+        }
+        
+
+        .info-box {
+            background: #FFF;
+            width: 1000px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 2px;
+            border: 1px solid #0A0A0A;
+            margin-left: -150px;
+            box-shadow: 10px 7px 20px rgb(20, 35, 193);
+
+        }
+
+        .information-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .information {
+            background: #f7f4f4;
+            width: calc(100vw - 40px);
+            margin: 50px 50px;
+            padding: 10px;
+            border-radius: 2px;
+            border: 1px solid #0A0A0A;
+            box-sizing: border-box;
+            filter: drop-shadow(10px 7px 10px orange);
+        }
+        
+        .info-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            font-family: 'Arial';
+            font-size: 9px;
+            font-variant: small-caps;
+            color: #0A0A0A;
+            text-transform: lowercase;
+            text-align: justify;
+            letter-spacing: 0.5px;
+            line-height: 125%
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/index">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR-O1nqOEZ-SA_DRD6I3ciaSl01yt2-lnwBGLGuKHbB667l1v15"
+                            alt="diseases" width="80px" height="80px">Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if error_message %}
+        <h1>Drug not found in database.</h1>
+        {% else %}
+        <h1>Safety Result</h1>
+        <div class="info-box">
+            <h2 class="info-title">Drug Information</h2>
+            <ul class="info-list">
+                <li class="info-item">Drug Name: {{ drug_name }}</li>
+                <li class="info-item">Condition: {{ condition }}</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h2 class="info-title">Side Effects</h2>
+            <p class="info-text">{{ side_effects }}</p>
+        </div>
+    </div>
+        <div class="information-container">
+        <div class="information">
+            <h2 class="info-title">Benefits</h2>
+            <p class="info-text">{{ benefits }}</p>
+        </div>
+        <div class="information">
+            <h2 class="info-title">Precautions</h2>
+            <p class="info-text">{{ precautions }}</p>
+        </div>
+        <div class="information">
+            <h2 class="info-title">Warnings</h2>
+            <p class="info-text">{{ warnings }}</p>
+        </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

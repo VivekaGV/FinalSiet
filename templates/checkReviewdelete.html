@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .navbar-custom {
+            background-color: #00008B;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background-color: #00008B; color: #ffffff; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto;">
+            <div>
+                <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold;">MCPDR</a>
+                <a href="/index" style="color: #ffffff; text-decoration: none; margin-right: 10px;">Home</a>
+            </div>
+            <div>
+                <a href="/logout" style="color: #ffffff; text-decoration: none;">Log out</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Check Reviews for a Drug</h1>
+        <form action="/get_reviews" method="POST">
+            <label for="drug_name">Enter Drug Name:</label><br>
+            <input type="text" id="drug_name" name="drug_name" placeholder="Enter the drug name"><br><br>
+            <button type="submit">Check Reviews</button>
+        </form>
+    </div>
+</body>
+</html>

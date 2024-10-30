@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Drug Recommendation System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/util.css')}}"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}"> -->
+	<style>
+		body {
+            background-image: url(https://cdn.wallpapersafari.com/45/22/pySf2Q.jpg);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+		h1{
+			color: aliceblue;
+		}
+        .limiter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container-login100 {
+            width: 100%;
+            padding: 15px;
+            overflow: hidden;
+            max-width: 400px;
+            margin: 0 auto;
+			width: 100vh;
+			
+        }
+
+        .wrap-login100 {
+            background: #0a0a0a;
+            text-align: center;
+            box-shadow: 20px 20px 20px rgba(6, 6, 6, 0.16), 0 3px 6px rgba(21, 17, 17, 0.23);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .login100-pic img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .login100-form {
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .input100 {
+            background-color: #edf2f4;
+            border: none;
+            border-bottom: 5px solid #0DB8DE;
+            border-top: 0px;
+            border-radius: 0px;
+            font-weight: bold;
+            outline: 0;
+            margin-bottom: 20px;
+            padding-left: 0px;
+            color: #0f0f0f;
+            width: 90%;
+			height: 30px;
+			border-radius: 30px;
+			padding-left: 20px;
+        }
+
+        .focus-input100 {
+            position: absolute;
+            display: block;
+            width: calc(100% + 1px);
+            height: calc(100% + 1px);
+            bottom: -1px;
+            left: -1px;
+            pointer-events: none;
+            
+            border-radius: 10px;
+            transition: all 0.4s;
+            transform: translateY(0px);
+        }
+
+        .focus-input100::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border: inset 1px rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            pointer-events: none;
+            transition: all 0.4s;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+       
+
+        .symbol-input100 {
+            position: absolute;
+            font-size: 15px;
+            color: #555555;
+            display: flex;
+            width: calc(100% - 20px);
+            justify-content: flex-end;
+            right: 10px;
+            top: 10px;
+        }
+
+        .symbol-input100 i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .login100-form-btn {
+			width: 200px;
+            background-color: #3ddf4f;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s;
+            margin: 0 auto; 
+            display: block; 
+        }
+
+        .login100-form-btn:hover {
+            background-color: #06A6BF;
+        }
+
+        .err {
+            color: red;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+		label{
+			color: aliceblue;
+			margin-left: 10px;
+			padding: 0px;
+			font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		}
+
+        .navbar-custom {
+            background-color: #00008B;
+        }
+        /* change the brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #ffffff;
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            
+            color: #ffff00;
+        }
+        img{
+            border-radius: 20px;
+            margin: 0px;
+            padding:10px;
+        }
+        b{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+        }
+	</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/index"> 
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR-O1nqOEZ-SA_DRD6I3ciaSl01yt2-lnwBGLGuKHbB667l1v15"
+                        alt="diseases" width="80px" height="80px">
+                        <b style="color: rgb(196, 13, 13);">Medical Condition Predictor</b> and Drug Recommender <b style="color: rgba(0, 0, 0, 0.566);">NLP</b>
+
+                    </a>
+                    
+                </li>
+
+               
+                
+            </ul>
+           
+        </div>
+    </nav>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<h1><u>LOGIN</u></h1>
+
+				<form class="login100-form validate-form" method="POST" action="/login_validation">
+					
+					
+
+					<div class="err">{{ lbl }}</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid username is required">
+						<label for="">Username</label>
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<label for="">Password</label>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="err">{{ pattern }}</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							<b style="font-size: 20px;">Login</b>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+	<script src="static\css\main.css"></script>
+
+</body>
+
+</html>
